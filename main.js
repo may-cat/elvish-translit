@@ -17,7 +17,7 @@ var sheet = (function() {
 
 var arrayOfTengwas = [];
 $(document).ready(function(){
-    sheet.insertRule('@font-face { font-family: "Tengwar"; src: url(http://may-cat.ru/tengwar/tngan.ttf) format("truetype");}', sheet.cssRules.length);
+    sheet.insertRule('@font-face { font-family: "Tengwar"; src: url(./tngan.ttf) format("truetype");}', sheet.cssRules.length);
     sheet.insertRule('.tengwar { font-family: "Tengwar"; }', sheet.cssRules.length);
     $.ajax({
         dataType: "json",

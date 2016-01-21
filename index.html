@@ -12,7 +12,7 @@
     <style>
       @font-face {
         font-family: "Tengwar";
-        src: url(http://may-cat.ru/tengwar/tngan.ttf) format("truetype");
+        src: url(./tngan.ttf) format("truetype");
       }
       .tengwar { font-family: "Tengwar"; font-size:30px; }
     </style>
@@ -36,7 +36,7 @@
         <br/>
         <p>Приятного использования!</p>
         <form method="GET">
-            <textarea name="q" id="q" cols="30" rows="10"><?=htmlspecialchars($_REQUEST['q'])?></textarea><br>
+            <textarea name="q" id="q" cols="30" rows="10"></textarea><br>
             <input type="submit" value="транслитерировать" id="do"/>
         </form>
         <div class="tengwar" id="target"></div>
