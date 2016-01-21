@@ -7,7 +7,7 @@
     {
       "en": "a",
       "regexp": "([aeiou])a|^a",
-      "replace": "$1`C",
+      "replace": "$1{{@@`C@@}}",
       "tengwa": "`C",
       "type": "vowel",
       "standalone": true,
@@ -17,7 +17,7 @@
       "en": "e",
       "regexp": "([aeiou])e|^e",
       "example": "elf, moed",
-      "replace": "$1`F",
+      "replace": "$1{{@@`F@@}}",
       "type": "vowel",
       "standalone": true,
       "tengwa": "`F"
@@ -25,7 +25,7 @@
     {
       "en": "i",
       "regexp": "([aeiou])i|^i",
-      "replace": "$1`G",
+      "replace": "$1{{@@`G@@}}",
       "tengwa": "`G",
       "type": "vowel",
       "standalone": true,
@@ -35,7 +35,7 @@
       "en": "o",
       "regexp": "([aeiou])o|^o",
       "example": "pot",
-      "replace": "$1`H",
+      "replace": "$1{{@@`H@@}}",
       "type": "vowel",
       "standalone": true,
       "tengwa": "`H"
@@ -44,7 +44,7 @@
       "en": "u",
       "regexp": "([aeiou])u|^u",
       "example": "cut",
-      "replace": "$1`J",
+      "replace": "$1{{@@`J@@}}",
       "type": "vowel",
       "standalone": true,
       "tengwa": "`J"
@@ -53,7 +53,7 @@
       "en": "a",
       "regexp": "(?!{{@@)a(?!@@}})",
       "example": "date",
-      "replace": "C",
+      "replace": "{{@@C@@}}",
       "type": "vowel",
       "standalone": false,
       "tengwa": "C"
@@ -62,7 +62,7 @@
       "en": "e",
       "regexp": "(?!{{@@)e(?!@@}})",
       "example": "check",
-      "replace": "F",
+      "replace": "{{@@F@@}}",
       "type": "vowel",
       "standalone": false,
       "tengwa": "F"
@@ -71,7 +71,7 @@
       "en": "i",
       "regexp": "(?!{{@@)i(?!@@}})",
       "example": "pit",
-      "replace": "G",
+      "replace": "{{@@G@@}}",
       "type": "vowel",
       "standalone": false,
       "tengwa": "G"
@@ -80,7 +80,7 @@
       "en": "o",
       "regexp": "(?!{{@@)o(?!@@}})",
       "example": "pot",
-      "replace": "H",
+      "replace": "{{@@H@@}}",
       "type": "vowel",
       "standalone": false,
       "tengwa": "H"
@@ -89,7 +89,7 @@
       "en": "u",
       "regexp": "(?!{{@@)u(?!@@}})",
       "example": "pur",
-      "replace": "J",
+      "replace": "{{@@J@@}}",
       "type": "vowel",
       "standalone": false,
       "tengwa": "J"
@@ -98,7 +98,7 @@
       "en": "th",
       "regexp": "th[aeiou]",
       "example": "this",
-      "replace": "4",
+      "replace": "{{@@4@@}}",
       "type": "consonant",
       "standalone": true,
       "tengwa": "4"
@@ -107,7 +107,7 @@
       "en": "ch",
       "regexp": "(?!{{@@)ch(?!@@}})",
       "example": "channel",
-      "replace": "a",
+      "replace": "{{@@a@@}}",
       "type": "consonant",
       "standalone": true,
       "tengwa": "a"
@@ -116,7 +116,7 @@
       "en": "gh",
       "regexp": "(?!{{@@)gh(?!@@}})",
       "example": "aghast",
-      "replace": "v",
+      "replace": "{{@@v@@}}",
       "type": "consonant",
       "standalone": true,
       "tengwa": "v"
@@ -125,7 +125,7 @@
       "en": "ng",
       "regexp": "(?!{{@@)ng(?!@@}})",
       "example": "engine",
-      "replace": "b",
+      "replace": "{{@@b@@}}",
       "type": "consonant",
       "standalone": true,
       "tengwa": "b"
@@ -134,7 +134,7 @@
       "en": "sh",
       "regexp": "(?!{{@@)d(?!@@}})",
       "example": "shatter",
-      "replace": "d",
+      "replace": "{{@@d@@}}",
       "type": "consonant",
       "standalone": true,
       "tengwa": "d"
@@ -143,7 +143,7 @@
       "en": "th",
       "regexp": "(?!{{@@)th(?!@@}})",
       "example": "the",
-      "replace": "3",
+      "replace": "{{@@3@@}}",
       "type": "consonant",
       "standalone": true,
       "tengwa": "3"
@@ -152,7 +152,7 @@
       "en": "wh",
       "regexp": "(?!{{@@)wh(?!@@}})",
       "example": "what",
-      "replace": "o",
+      "replace": "{{@@o@@}}",
       "type": "consonant",
       "standalone": true,
       "tengwa": "o"
@@ -161,7 +161,7 @@
       "en": "r",
       "regexp": "^r",
       "example": "ride",
-      "replace": "7",
+      "replace": "{{@@7@@}}",
       "type": "consonant",
       "standalone": true,
       "tengwa": "7"
@@ -170,7 +170,7 @@
       "en": "b",
       "regexp": "(?!{{@@)b(?!@@}})",
       "example": "back",
-      "replace": "w",
+      "replace": "{{@@w@@}}",
       "type": "consonant",
       "standalone": true,
       "tengwa": "w"
@@ -179,7 +179,7 @@
       "en": "d",
       "regexp": "(?!{{@@)d(?!@@}})",
       "example": "dance",
-      "replace": "2",
+      "replace": "{{@@2@@}}",
       "type": "consonant",
       "standalone": true,
       "tengwa": "2"
@@ -188,7 +188,7 @@
       "en": "f",
       "regexp": "(?!{{@@)f(?!@@}})",
       "example": "face",
-      "replace": "e",
+      "replace": "{{@@e@@}}",
       "type": "consonant",
       "standalone": true,
       "tengwa": "e"
@@ -197,7 +197,7 @@
       "en": "g",
       "regexp": "(?!{{@@)g(?!@@}})",
       "example": "gaze",
-      "replace": "x",
+      "replace": "{{@@x@@}}",
       "type": "consonant",
       "standalone": true,
       "tengwa": "x"
@@ -206,7 +206,7 @@
       "en": "h",
       "regexp": "(?!{{@@)h(?!@@}})",
       "example": "he",
-      "replace": "9",
+      "replace": "{{@@9@@}}",
       "type": "consonant",
       "standalone": true,
       "tengwa": "9"
@@ -215,7 +215,7 @@
       "en": "j",
       "regexp": "(?!{{@@)j(?!@@}})",
       "example": "jam",
-      "replace": "s",
+      "replace": "{{@@s@@}}",
       "type": "consonant",
       "standalone": true,
       "tengwa": "s"
@@ -224,7 +224,7 @@
       "en": "k",
       "regexp": "(?!{{@@)k(?!@@}})",
       "example": "kreepy",
-      "replace": "z",
+      "replace": "{{@@z@@}}",
       "type": "consonant",
       "standalone": true,
       "tengwa": "z"
@@ -233,7 +233,7 @@
       "en": "l",
       "regexp": "(?!{{@@)l(?!@@}})",
       "example": "lazer",
-      "replace": "j",
+      "replace": "{{@@j@@}}",
       "type": "consonant",
       "standalone": true,
       "tengwa": "j"
@@ -242,7 +242,7 @@
       "en": "m",
       "regexp": "(?!{{@@)m(?!@@}})",
       "example": "mother",
-      "replace": "t",
+      "replace": "{{@@t@@}}",
       "type": "consonant",
       "standalone": true,
       "tengwa": "t"
@@ -251,7 +251,7 @@
       "en": "n",
       "regexp": "(?!{{@@)n(?!@@}})",
       "example": "new",
-      "replace": "5",
+      "replace": "{{@@5@@}}",
       "type": "consonant",
       "standalone": true,
       "tengwa": "5"
@@ -260,7 +260,7 @@
       "en": "p",
       "regexp": "(?!{{@@)p(?!@@}})",
       "example": "pie",
-      "replace": "q",
+      "replace": "{{@@q@@}}",
       "type": "consonant",
       "standalone": true,
       "tengwa": "q"
@@ -269,7 +269,7 @@
       "en": "r",
       "regexp": "(?!{{@@)r(?!@@}})",
       "example": "bar",
-      "replace": "6",
+      "replace": "{{@@6@@}}",
       "type": "consonant",
       "standalone": true,
       "tengwa": "6"
@@ -278,7 +278,7 @@
       "en": "s",
       "regexp": "(?!{{@@)s(?!@@}})",
       "example": "sacred",
-      "replace": "8",
+      "replace": "{{@@8@@}}",
       "type": "consonant",
       "standalone": true,
       "tengwa": "8"
@@ -287,7 +287,7 @@
       "en": "t",
       "regexp": "(?!{{@@)t(?!@@}})",
       "example": "twelve",
-      "replace": "1",
+      "replace": "{{@@1@@}}",
       "type": "consonant",
       "standalone": true,
       "tengwa": "1"
@@ -296,7 +296,7 @@
       "en": "v",
       "regexp": "(?!{{@@)v(?!@@}})",
       "example": "view",
-      "replace": "r",
+      "replace": "{{@@r@@}}",
       "type": "consonant",
       "standalone": true,
       "tengwa": "r"
@@ -305,7 +305,7 @@
       "en": "w",
       "regexp": "(?!{{@@)w(?!@@}})",
       "example": "wind",
-      "replace": "y",
+      "replace": "{{@@y@@}}",
       "type": "consonant",
       "standalone": true,
       "tengwa": "y"
@@ -314,7 +314,7 @@
       "en": "y",
       "regexp": "(?!{{@@)y(?!@@}})",
       "example": "yell",
-      "replace": "h",
+      "replace": "{{@@h@@}}",
       "type": "consonant",
       "standalone": true,
       "tengwa": "h"
@@ -323,7 +323,7 @@
       "en": "z",
       "regexp": "(?!{{@@)z(?!@@}})",
       "example": "zebra",
-      "replace": "k",
+      "replace": "{{@@k@@}}",
       "type": "consonant",
       "standalone": true,
       "tengwa": "k"
