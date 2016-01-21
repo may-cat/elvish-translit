@@ -42,14 +42,10 @@
     var config = [];
     var curTengwa = {};
     $(document).ready(function(){
-            console.log('ok');
         $.ajax({
             dataType: "json",
             url: "data_2.json",
             success: function(x){
-                console.log('loaded');
-                console.log(x);
-                console.log('!');
                 arrayOfTeng = x.regex;
                 config = x.config;
             },
@@ -63,11 +59,11 @@
             var arTxt = txt.split(' ');
             for (i in arTxt) {
                 // Применяем все шаблоны по очереди
-                console.log(arrayOfTeng);
                 for (curTengwa in arrayOfTeng) {
                     var re = new RegExp(arrayOfTeng[curTengwa].regexp, "ig");
                     if (arTxt[i].match(re))
                         arTxt[i] = arTxt[i].replace(re, arrayOfTeng[curTengwa].replace);
+                    console.log(arTxt[i]);
                 }
                 var re = new RegExp(config.delimiterbefore, "ig");
                 arTxt[i] = arTxt[i].replace(re,"");
