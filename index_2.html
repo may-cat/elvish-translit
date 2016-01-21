@@ -47,7 +47,9 @@
             dataType: "json",
             url: "data_2.json",
             success: function(x){
+                console.log('loaded');
                 console.log(x);
+                console.log('!');
                 arrayOfTeng = x.regex;
                 config = x.config;
             },
