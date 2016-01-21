@@ -1,0 +1,398 @@
+[
+  {
+    "ru": "а",
+    "regexp": "([ьуеаоэяиюыёзc])а|^а",
+    "replace": "$1`C",
+    "tengwa": "`C",
+    "type": "vowel",
+    "standalone": true,
+    "example": "маасдам, арда"
+  },
+  {
+    "ru": "э",
+    "regexp": "([ьуеаоэяиюыёз])э|^э",
+    "replace": "$1`F",
+    "tengwa": "`F",
+    "type": "vowel",
+    "standalone": true,
+    "example": "моэр, эрос"
+  },
+  {
+    "ru": "и",
+    "regexp": "([ьуеаоэяиюыёз])и|^и",
+    "replace": "$1`G",
+    "tengwa": "`G",
+    "type": "vowel",
+    "standalone": true,
+    "example": "изба, мэи"
+  },
+  {
+    "ru": "о",
+    "regexp": "([ьуеаоэяиюыёз])о|^о",
+    "example": "облако",
+    "replace": "$1`H",
+    "type": "vowel",
+    "standalone": true,
+    "tengwa": "`H"
+  },
+  {
+    "ru": "у",
+    "regexp": "([ьуеаоэяиюыёз])у|^у",
+    "example": "узор, заурчал",
+    "replace": "$1`J",
+    "type": "vowel",
+    "standalone": true,
+    "tengwa": "`J"
+  },
+  {
+    "ru": "а",
+    "regexp": "а",
+    "example": "дата",
+    "replace": "C",
+    "type": "vowel",
+    "standalone": false,
+    "tengwa": "C"
+  },
+  {
+    "ru": "э",
+    "regexp": "э",
+    "example": "мэр",
+    "replace": "F",
+    "type": "vowel",
+    "standalone": false,
+    "tengwa": "F"
+  },
+  {
+    "ru": "и",
+    "regexp": "и",
+    "example": "пир",
+    "replace": "G",
+    "type": "vowel",
+    "standalone": false,
+    "tengwa": "G"
+  },
+  {
+    "ru": "о",
+    "regexp": "о",
+    "example": "кот",
+    "replace": "H",
+    "type": "vowel",
+    "standalone": false,
+    "tengwa": "H"
+  },
+  {
+    "ru": "у",
+    "regexp": "у",
+    "example": "путь",
+    "replace": "J",
+    "type": "vowel",
+    "standalone": false,
+    "tengwa": "J"
+  },
+  {
+    "ru": "я",
+    "regexp": "я",
+    "example": "яблоко",
+    "replace": "hC",
+    "type": "vowel",
+    "standalone": true,
+    "tengwa": "hC"
+  },
+  {
+    "ru": "е",
+    "regexp": "е",
+    "example": "еда",
+    "replace": "hF",
+    "type": "vowel",
+    "standalone": true,
+    "tengwa": "hF"
+  },
+  {
+    "ru": "ё",
+    "regexp": "ё",
+    "example": "ёлка",
+    "replace": "hH",
+    "type": "vowel",
+    "standalone": true,
+    "tengwa": "hH"
+  },
+  {
+    "ru": "ю",
+    "regexp": "ю",
+    "example": "юла",
+    "replace": "hJ",
+    "type": "vowel",
+    "standalone": true,
+    "tengwa": "hJ"
+  },
+  {
+    "ru": "ы",
+    "regexp": "ы",
+    "example": "смысл",
+    "replace": "nB",
+    "type": "vowel",
+    "standalone": true,
+    "tengwa": "nB"
+  },
+  {
+    "ru": "ь",
+    "regexp": "ь",
+    "example": "тень",
+    "replace": "Ì",
+    "type": "vowel",
+    "standalone": false,
+    "tengwa": "Ì"
+  },
+  {
+    "ru": "ъ",
+    "regexp": "ъ",
+    "example": "подъезд",
+    "replace": "n",
+    "type": "consonant",
+    "standalone": true,
+    "tengwa": "n"
+  },
+  {
+    "ru": "ц",
+    "regexp": "ц",
+    "example": "перец",
+    "replace": "1_",
+    "type": "consonant",
+    "standalone": true,
+    "tengwa": "1_"
+  },
+  {
+    "ru": "щ",
+    "regexp": "щ",
+    "example": "ящер",
+    "replace": "A",
+    "type": "consonant",
+    "standalone": true,
+    "tengwa": "A"
+  },
+  {
+    "ru": "т",
+    "regexp": "т",
+    "example": "терем",
+    "replace": "1",
+    "type": "consonant",
+    "standalone": true,
+    "tengwa": "1"
+  },
+  {
+    "ru": "п",
+    "regexp": "п",
+    "example": "полёт",
+    "replace": "q",
+    "type": "consonant",
+    "standalone": true,
+    "tengwa": "q"
+  },
+  {
+    "ru": "ч",
+    "regexp": "ч",
+    "example": "чека",
+    "replace": "a",
+    "type": "consonant",
+    "standalone": true,
+    "tengwa": "a"
+  },
+  {
+    "ru": "к",
+    "regexp": "к",
+    "example": "кот",
+    "replace": "z",
+    "type": "consonant",
+    "standalone": true,
+    "tengwa": "z"
+  },
+  {
+    "ru": "г",
+    "regexp": "г",
+    "example": "гараж",
+    "replace": "x",
+    "type": "consonant",
+    "standalone": true,
+    "tengwa": "x"
+  },
+  {
+    "ru": "б",
+    "regexp": "б",
+    "example": "буря",
+    "replace": "w",
+    "type": "consonant",
+    "standalone": true,
+    "tengwa": "w"
+  },
+  {
+    "ru": "дж",
+    "regexp": "дж",
+    "example": "джон",
+    "replace": "s",
+    "type": "consonant",
+    "standalone": true,
+    "tengwa": "s"
+  },
+  {
+    "ru": "д",
+    "regexp": "д",
+    "example": "дом",
+    "replace": "2",
+    "type": "consonant",
+    "standalone": true,
+    "tengwa": "2"
+  },
+  {
+    "ru": "ф",
+    "regexp": "ф",
+    "example": "фен",
+    "replace": "e",
+    "type": "consonant",
+    "standalone": true,
+    "tengwa": "e"
+  },
+  {
+    "ru": "ш",
+    "regexp": "ш",
+    "example": "шок",
+    "replace": "d",
+    "type": "consonant",
+    "standalone": true,
+    "tengwa": "d"
+  },
+  {
+    "ru": "х",
+    "regexp": "х",
+    "example": "ход",
+    "replace": "c",
+    "type": "consonant",
+    "standalone": true,
+    "tengwa": "c"
+  },
+  {
+    "ru": "в",
+    "regexp": "в",
+    "example": "вот",
+    "replace": "r",
+    "type": "consonant",
+    "standalone": true,
+    "tengwa": "r"
+  },
+  {
+    "ru": "ж",
+    "regexp": "ж",
+    "example": "жизнь",
+    "replace": "f",
+    "type": "consonant",
+    "standalone": true,
+    "tengwa": "f"
+  },
+  {
+    "ru": "н",
+    "regexp": "н",
+    "example": "нет",
+    "replace": "5",
+    "type": "consonant",
+    "standalone": true,
+    "tengwa": "5"
+  },
+  {
+    "ru": "м",
+    "regexp": "м",
+    "example": "мне",
+    "replace": "t",
+    "type": "consonant",
+    "standalone": true,
+    "tengwa": "t"
+  },
+  {
+    "ru": "й",
+    "regexp": "й",
+    "example": "йог",
+    "replace": "h",
+    "type": "consonant",
+    "standalone": true,
+    "tengwa": "h"
+  },
+  {
+    "ru": "л",
+    "regexp": "л",
+    "example": "лёд",
+    "replace": "j",
+    "type": "consonant",
+    "standalone": true,
+    "tengwa": "j"
+  },
+  {
+    "ru": "р",
+    "regexp": "р",
+    "example": "род",
+    "replace": "7",
+    "type": "consonant",
+    "standalone": true,
+    "tengwa": "7"
+  },
+  {
+    "ru": "з",
+    "regexp": "з",
+    "example": "зоб",
+    "replace": "k",
+    "type": "consonant",
+    "standalone": true,
+    "tengwa": "k"
+  },
+  {
+    "ru": "с",
+    "regexp": "с",
+    "example": "сок",
+    "replace": "8",
+    "type": "consonant",
+    "standalone": true,
+    "tengwa": "8"
+  },
+  {
+    "ru": "-",
+    "regexp": "\\-",
+    "example": "ола-ла",
+    "replace": "&",
+    "type": "punctuation",
+    "standalone": true,
+    "tengwa": "&"
+  },
+  {
+    "ru": ".",
+    "regexp": "\\.",
+    "example": "предложение.",
+    "replace": "-",
+    "type": "punctuation",
+    "standalone": true,
+    "tengwa": "-"
+  },
+  {
+    "ru": "?",
+    "regexp": "\\?",
+    "example": "да?",
+    "replace": "À",
+    "type": "punctuation",
+    "standalone": true,
+    "tengwa": "À"
+  },
+  {
+    "ru": ",",
+    "regexp": "\\,",
+    "example": "я, ты",
+    "replace": "&",
+    "type": "punctuation",
+    "standalone": true,
+    "tengwa": "&"
+  },
+  {
+    "ru": "!",
+    "regexp": "\\!",
+    "example": "кот!",
+    "replace": "½",
+    "type": "punctuation",
+    "standalone": true,
+    "tengwa": "½"
+  }
+]
