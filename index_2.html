@@ -22,7 +22,7 @@
       <h1 class="project-name">Эльфийский транслит</h1>
       <h2 class="project-tagline">Эльфийский транслит. Транслитерирует русский язык на тенгвар.</h2>
       <a href="index.html" class="btn">Транслит текста</a>
-      <a href="learn.html" class="btn">Научиться писать от руки</a>
+      <a href="learn.html" class="btn">Научиться бегло читать</a>
     </section>
 
     <section class="main-content">
@@ -46,7 +46,7 @@
             dataType: "json",
             url: "data_2.json",
             success: function(x){
-                arrayOfTeng = x.regex;
+                arrayOfTeng = x.regex_en;// @todo: array_merge with x.regex_ru!!!
                 config = x.config;
             },
             //async: false

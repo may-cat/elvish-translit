@@ -1,10 +1,19 @@
+/**
+ * Скрипт подключает шрифт к странице,
+ * загружает базу тенгв,
+ * и создаёт метод для превращения текста в тенгвар.
+ *
+ * Вообще так кодить нельзя, это жуткая лапша. Фу таким быть!
+ *
+ * @todo: сделать путь до шрифта параметром метода .tengwarize()
+ * @todo: сделать путь до data.json параметром метода .tengwarize()
+ * @todo: включить все загрузки данных и т.п. в объект, на который инициализирован .tengwarize()
+ * @todo: избавиться от глобальных переменных arrayOfTengwas, config - это ж стыдоба!
+ */
+
 var sheet = (function() {
     // Create the <style> tag
     var style = document.createElement("style");
-
-    // Add a media (and/or media query) here if you'd like!
-    // style.setAttribute("media", "screen")
-    // style.setAttribute("media", "only screen and (max-width : 1024px)")
 
     // WebKit hack :(
     style.appendChild(document.createTextNode(""));
@@ -16,6 +25,7 @@ var sheet = (function() {
 })();
 
 var arrayOfTengwas = [];
+var config = [];
 $(document).ready(function(){
     sheet.insertRule('@font-face { font-family: "Tengwar"; src: url(./tngan.ttf) format("truetype");}', sheet.cssRules.length);
     sheet.insertRule('.tengwar { font-family: "Tengwar"; }', sheet.cssRules.length);
@@ -23,7 +33,8 @@ $(document).ready(function(){
         dataType: "json",
         url: "data.json",
         success: function(x){
-            arrayOfTengwas = x;
+            arrayOfTengwas = x.regex_ru;
+            config = x.config;
         },
         async: false
     });

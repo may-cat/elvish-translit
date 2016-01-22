@@ -3,7 +3,7 @@
     "delimiterbefore": "{{@@",
     "delimiterafter": "@@}}"
   },
-  "regex": [
+  "regex_eng": [
     {
       "en": "a",
       "regexp": "([aeiou])a|^a",
@@ -327,7 +327,9 @@
       "type": "consonant",
       "standalone": true,
       "tengwa": "k"
-    },
+    }
+  ],
+  "regex_ru": [
     {
       "ru": "а",
       "regexp": "([ьуеаоэяиюыёзc])а|^а",
