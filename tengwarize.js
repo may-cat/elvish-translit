@@ -31,7 +31,7 @@ $(document).ready(function(){
     sheet.insertRule('.tengwar { font-family: "Tengwar"; }', sheet.cssRules.length);
     $.ajax({
         dataType: "json",
-        url: "data.json",
+        url: "data_2.json",
         success: function(x){
             arrayOfTengwas = x.regex_ru;
             config = x.config;
