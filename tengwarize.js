@@ -42,12 +42,12 @@
             });
         },
         convert_text: function(options) {
-            var curTengwa;
             // подрубаем к объекту стили со шрифтом Tengwar Annatar
             var txt = this.tengwarize('extract_text',options);
             $(this).html(''); // затираем всё, что есть
             var arTxt = txt.split(' '); // вытащенный текст разбиваем по словам
             for (i in arTxt) { // и по словам превращаем в тенгвар
+                var curTengwa;
                 // Применяем все шаблоны по очереди
                 for (curTengwa in this.tengwar_array) {
                     var re = new RegExp(this.tengwar_array[curTengwa].regexp, "ig");
@@ -97,7 +97,7 @@
         } else if ( typeof method === 'object' || ! method ) {
           return methods.init.apply( this, arguments );
         } else {
-          $.error( 'Метод с именем ' +  method + ' не существует для jQuery.tooltip' );
+          $.error( 'Метод с именем ' +  method + ' не существует для jQuery.tengwarize' );
         }
     }
 
