@@ -133,7 +133,7 @@
       },
       {
         "en": "sh",
-        "regexp": "(?!{{@@)d(?!@@}})",
+        "regexp": "(?!{{@@)sh(?!@@}})",
         "example": "shatter",
         "replace": "{{@@d@@}}",
         "type": "consonant",
