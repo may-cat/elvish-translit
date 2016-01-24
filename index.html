@@ -30,52 +30,30 @@
 <a id="Добро-пожаловать" class="anchor" href="#%D0%94%D0%BE%D0%B1%D1%80%D0%BE-%D0%BF%D0%BE%D0%B6%D0%B0%D0%BB%D0%BE%D0%B2%D0%B0%D1%82%D1%8C" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Добро пожаловать!</h3>
 
         <p>Вашему вниманию представлен инструмент для транслитерации русского текста на тенгвар.</p>
-        <p>Подобно тому, kak vy pishete traslitom po-russki, можно писать эльфийскими буквами. Правила соответствия букв тенгвам - предмет споров, в этом нет согласия ни в русском, ни в английском языке. Данный скрипт опирается на <a href="http://hex.pp.ua/tengwar.php">статью автора амдф</a>, где всё очень подробно описано. Английский язык транлитерирован <a href="http://www.omniglot.com/conscripts/tengwar_eng.htm">по другой статье</a> (увы, с неточностями).</p>
+        <p>Подобно тому, kak vy pishete traslitom po-russki, можно писать эльфийскими буквами. Правила соответствия букв тенгвам - предмет споров, в этом нет согласия ни в русском, ни в английском языке. Данный скрипт опирается на <a href="http://hex.pp.ua/tengwar.php">статью автора амдф</a>, где всё очень подробно описано. Английский язык транлитерирован <a href="http://www.omniglot.com/conscripts/tengwar_eng.htm">по другой статье</a></p>
         <p>Использованный шрифт - <a href="tngan.ttf">Tengwar Annatar</a> свободно скачивается в интернете. Разработчикам может быть интересен разработанный мной <a href="data.json">json-файл с regExp-шаблонами</a>, делающими всю магию.</p>
         <br/>
         <p>Приятного использования!</p>
-        <textarea name="q" id="q" cols="90" rows="10"></textarea><br>
-        <div class="tengwar" id="target"></div>
+        <textarea name="q" id="q" cols="90" rows="10">Привет друг!
+Privet drug</textarea><br>
+        <div class="tengwar" id="target">
+        </div>
+        <script src="tengwarize.js"></script>
 
         <script type="text/javascript">
-    var arrayOfTeng = [];
-    var config = [];
-    var curTengwa = {};
-    $(document).ready(function(){
-        $.ajax({
-            dataType: "json",
-            url: "data_2.json",
-            success: function(x){
-                arrayOfTeng = x.regex_eng.concat(x.regex_ru);
-                config = x.config;
-            },
-            async: false
-        });
-        // По нажатию клавиши - проходимся по всем словам и заменяем в них буквы по шаблонам
-        $('#q').keyup(function() {
-            var txt = $(this).val();
-            $('#target').html('');
-            // Разбиваем по словам
-            var arTxt = txt.split(' ');
-            for (i in arTxt) {
-                // Применяем все шаблоны по очереди
-                for (curTengwa in arrayOfTeng) {
-                    var re = new RegExp(arrayOfTeng[curTengwa].regexp, "ig");
-                    if (arTxt[i].match(re))
-                        arTxt[i] = arTxt[i].replace(re, arrayOfTeng[curTengwa].replace);
-                }
-                var re = new RegExp(config.delimiterbefore, "ig");
-                arTxt[i] = arTxt[i].replace(re,"");
-                var re = new RegExp(config.delimiterafter, "ig");
-                arTxt[i] = arTxt[i].replace(re,"");
-                $('#target').append(arTxt[i]+' ');
-            }
-        });
-
-    });
-
-
-</script>
+            $(document).ready(function(){
+                $('#target').tengwarize({
+                    json_path: "data.json",
+                    font_path: "./tngan.ttf",
+                    languages: ["ru","en"],
+                    //source_selector: "#target",
+                    source_selector: "#q",
+                    //mode: "once"
+                    mode: "event-keyup",
+                    linebreaks: true
+                });
+            });
+        </script>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/may-cat/elvish-translit">Эльфийский транслит</a> is maintained by <a href="https://github.com/may-cat">may-cat</a>.</span>

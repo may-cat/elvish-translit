@@ -19,10 +19,11 @@
       </style>
       <script type="text/javascript">
         var allowed = [];
-        var curTengwa = [];
-        var prevTengwa = [];
+        var examples = {};
 
-
+        /**
+        * Удобная функция по поиску по массиву
+        */
         function inArray(needle, haystack) {
             var length = haystack.length;
             for(var i = 0; i < length; i++) {
@@ -31,44 +32,82 @@
             return false;
         }
 
+        /**
+        * Обновляем переменные исходя из отмеченных к тренировке тенгв
+        */
         function updateAllowed()
         {
             allowed=[];
             $('table.hint-table tr td span.ru').each(function(){
                 if ($(this).parent().find('input').is(':checked'))
+                {
                     allowed.push($(this).text());
+                    examples[$(this).text()] = $(this).attr('data-example');
+                }
             });
         }
 
+
+        /**
+          * Берём случайную букву из allowed, но не ту же, что уже есть в hidden-input
+          * Пишем её в hidden-input
+          * Транслитерируем в поле, где эта буква отображается
+          */
         function nextTengwaForTraining()
         {
-            prevTengwa = curTengwa;
-            updateAllowed();
-            curTengwa = arrayOfTengwas[Math.floor(Math.random()*arrayOfTengwas.length)];
-            if (curTengwa.type!='punctuation' && curTengwa.standalone && inArray(curTengwa.ru,allowed) && prevTengwa!=curTengwa) {
-                $('#tengwa').text(" "+curTengwa.tengwa)
-            } else {
-                curTengwa = prevTengwa;
-                nextTengwaForTraining();
-            }
-        }
-
-        function check(){
-            var val = $('#txt').val();
-            if (val=='')
+            if (allowed.length<2)
                 return false;
 
-            var re = new RegExp(curTengwa.regexp, "i");
-            if (re.test(val))
-                alert('хорошо, как в примере "'+curTengwa.example + "\" с буквой "+curTengwa.ru);
-            else
-                alert('плохо, подошло бы, например "'+curTengwa.example + "\" с буквой "+curTengwa.ru);
+            old_letter = $('#answer_to_quest').val();
+            letter = allowed[Math.floor(Math.random()*allowed.length)];
+            while (letter == old_letter) {
+                letter = allowed[Math.floor(Math.random()*allowed.length)];
+            }
+
+            $('#answer_to_quest').val(letter);
+
+            $('#tengwa').tengwarize({
+                json_path: "data.json",
+                font_path: "./tngan.ttf",
+                languages: ["ru"],
+                source_selector: "#answer_to_quest",
+                mode: "once",
+            });
+        }
+
+        /**
+         * @todo
+         *  Берём введённый текст и смотрим, входит ли в него подстрока, упомянутая в поле hidden
+         *  Да, если мы захотим "примеры", придётся их подбирать динамически из какого-то отдельного массива.
+         *  В том же allowed может он храниться или хз где ещё
+         */
+        function check() {
+            cur_letter = $('#answer_to_quest').val();
+            text = $('#txt').val();
+
+            if (text.indexOf(cur_letter)>-1) {
+                alert('хорошо, как в примере "'+examples[cur_letter] + "\" с буквой "+cur_letter);
+            }else{
+                alert('плохо, подошло бы, например "'+examples[cur_letter] + "\" с буквой "+cur_letter);
+            }
             $('#txt').val('');
+
             nextTengwaForTraining();
         }
 
 
         $(document).ready(function(){
+            // Раскрашиваем тенгвы в тексте
+            $('.ru-teng').each(function(){
+                $(this).tengwarize({
+                    json_path: "data.json",
+                    font_path: "./tngan.ttf",
+                    languages: ["ru"],
+                    mode: "once"
+                });
+            });
+            updateAllowed();
+
             // Генерация тенгвы для тренировки
             $('#next').click(function(){
                 nextTengwaForTraining();
@@ -84,6 +123,8 @@
                 }
             });
 
+
+            // Делаем при старте!
             $('#next').hide(); // Прячем кнопку, ибо сейчас всё автоматизировано
             nextTengwaForTraining();
 
@@ -94,16 +135,13 @@
                 return false;
             });
 
+            // При изменении списка тренируемых тенгв - надо обновлять массив тренируемых и текущую тенгву
+            $('.hint-table input[type="checkbox"]').click(function(){
+                updateAllowed();
+                nextTengwaForTraining();
+            });
         });
 
-    </script>
-      <script type="text/javascript">
-        $(document).ready(function(){
-            setTimeout(function(){
-                $('p.transl').tengwarize();
-                $('.ru-teng').tengwarize();
-            },2000);
-        })
     </script>
 </head>
   <body>
@@ -124,7 +162,10 @@
 
         <input type="submit" value="Next" id="next"/>
         <div>
-            <p class="tengwar" id="tengwa"></p>
+            <!-- Поле, в которое пишется оригинал -->
+            <input type="hidden" id="answer_to_quest" value="Я" />
+            <!-- Поле, в котором отображается тенгва -->
+            <p class="tengwar" id="tengwa">Я</p>
             <p>Введите слово на русском, содержащее эту тенгву:</p>
             <input type="text" id="txt"/>
             <input type="submit" id="check"/>
@@ -136,58 +177,58 @@
                 <h2>Согласные</h2>
                 <table class="hint-table">
                     <tr>
-                        <td><span class="ru-teng">т</span> <span class="ru">т</span> <input type="checkbox" checked="checked"></td>
-                        <td><span class="ru-teng">п</span> <span class="ru">п</span> <input type="checkbox" checked="checked"></td>
-                        <td><span class="ru-teng">ч</span> <span class="ru">ч</span> <input type="checkbox"></td>
-                        <td><span class="ru-teng">к</span> <span class="ru">к</span> <input type="checkbox"></td>
+                        <td><span class="ru-teng">т</span> <span class="ru" data-example="тетерев">т</span> <input type="checkbox" checked="checked"></td>
+                        <td><span class="ru-teng">п</span> <span class="ru" data-example="полёт">п</span> <input type="checkbox" checked="checked"></td>
+                        <td><span class="ru-teng">ч</span> <span class="ru" data-example="чайка">ч</span> <input type="checkbox"></td>
+                        <td><span class="ru-teng">к</span> <span class="ru" data-example="кот">к</span> <input type="checkbox"></td>
                     </tr>
                     <tr>
-                        <td><span class="ru-teng">д</span> <span class="ru">д</span> <input type="checkbox" checked="checked"></td>
-                        <td><span class="ru-teng">б</span> <span class="ru">б</span> <input type="checkbox" checked="checked"></td>
-                        <td><span class="ru-teng">дж</span> <span class="ru">дж</span> <input type="checkbox"></td>
-                        <td><span class="ru-teng">г</span> <span class="ru">г</span> <input type="checkbox"></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><span class="ru-teng">ф</span> <span class="ru">ф</span> <input type="checkbox"></td>
-                        <td><span class="ru-teng">ш</span> <span class="ru">ш</span> <input type="checkbox"></td>
-                        <td><span class="ru-teng">х</span> <span class="ru">х</span> <input type="checkbox"></td>
+                        <td><span class="ru-teng">д</span> <span class="ru" data-example="дуб">д</span> <input type="checkbox" checked="checked"></td>
+                        <td><span class="ru-teng">б</span> <span class="ru" data-example="берег">б</span> <input type="checkbox" checked="checked"></td>
+                        <td><span class="ru-teng">дж</span> <span class="ru" data-example="джокер">дж</span> <input type="checkbox"></td>
+                        <td><span class="ru-teng">г</span> <span class="ru" data-example="горчица">г</span> <input type="checkbox"></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td><span class="ru-teng">в</span> <span class="ru">в</span> <input type="checkbox"></td>
-                        <td><span class="ru-teng">ж</span> <span class="ru">ж</span> <input type="checkbox"></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td><span class="ru-teng">н</span> <span class="ru">н</span> <input type="checkbox"></td>
-                        <td><span class="ru-teng">м</span> <span class="ru">м</span> <input type="checkbox"></td>
-                        <td></td>
-                        <td></td>
+                        <td><span class="ru-teng">ф</span> <span class="ru" data-example="фазан">ф</span> <input type="checkbox"></td>
+                        <td><span class="ru-teng">ш</span> <span class="ru" data-example="шишка">ш</span> <input type="checkbox"></td>
+                        <td><span class="ru-teng">х</span> <span class="ru" data-example="хозяин">х</span> <input type="checkbox"></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td></td>
-                        <td><span class="ru-teng">й</span> <span class="ru">й</span> <input type="checkbox"></td>
-                        <td><span class="ru-teng">ъ</span> <span class="ru">ъ</span> <input type="checkbox"></td>
-                    </tr>
-                    <tr>
-                        <td><span class="ru-teng">р</span> <span class="ru">р</span> <input type="checkbox"></td>
-                        <td></td>
-                        <td><span class="ru-teng">л</span> <span class="ru">л</span> <input type="checkbox"></td>
+                        <td><span class="ru-teng">в</span> <span class="ru" data-example="вести">в</span> <input type="checkbox"></td>
+                        <td><span class="ru-teng">ж</span> <span class="ru" data-example="желание">ж</span> <input type="checkbox"></td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td><span class="ru-teng">с</span> <span class="ru">с</span> <input type="checkbox"></td>
+                        <td><span class="ru-teng">н</span> <span class="ru" data-example="нога">н</span> <input type="checkbox"></td>
+                        <td><span class="ru-teng">м</span> <span class="ru" data-example="мир">м</span> <input type="checkbox"></td>
                         <td></td>
-                        <td><span class="ru-teng">з</span> <span class="ru">з</span> <input type="checkbox"></td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td><span class="ru-teng">щ</span> <span class="ru">щ</span> <input type="checkbox"></td>
-                        <td><span class="ru-teng">ц</span> <span class="ru">ц</span> <input type="checkbox"></td>
-                        <td><span class="ru-teng">ы</span> <span class="ru">ы</span> <input type="checkbox"></td>
-                        <td><span class="ru-teng">ь</span> <span class="ru">ь</span> <input type="checkbox"></td>
+                        <td></td>
+                        <td></td>
+                        <td><span class="ru-teng">й</span> <span class="ru" data-example="йод">й</span> <input type="checkbox"></td>
+                        <td><span class="ru-teng">ъ</span> <span class="ru" data-example="двухъярусный">ъ</span> <input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                        <td><span class="ru-teng">р</span> <span class="ru" data-example="радость">р</span> <input type="checkbox"></td>
+                        <td></td>
+                        <td><span class="ru-teng">л</span> <span class="ru" data-example="лошадь">л</span> <input type="checkbox"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span class="ru-teng">с</span> <span class="ru" data-example="собака">с</span> <input type="checkbox"></td>
+                        <td></td>
+                        <td><span class="ru-teng">з</span> <span class="ru" data-example="зелень">з</span> <input type="checkbox"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span class="ru-teng">щ</span> <span class="ru" data-example="щавель">щ</span> <input type="checkbox"></td>
+                        <td><span class="ru-teng">ц</span> <span class="ru" data-example="цыплёнок">ц</span> <input type="checkbox"></td>
+                        <td><span class="ru-teng">ы</span> <span class="ru" data-example="тыл">ы</span> <input type="checkbox"></td>
+                        <td><span class="ru-teng">ь</span> <span class="ru" data-example="путь">ь</span> <input type="checkbox"></td>
                     </tr>
 
                 </table>
@@ -196,18 +237,18 @@
                 <h2>Гласные</h2>
                 <table class="hint-table">
                     <tr>
-                        <td><span class="ru-teng">а</span> <span class="ru">а</span> <input type="checkbox"></td>
-                        <td><span class="ru-teng">э</span> <span class="ru">э</span> <input type="checkbox"></td>
-                        <td><span class="ru-teng">и</span> <span class="ru">и</span> <input type="checkbox"></td>
-                        <td><span class="ru-teng">о</span> <span class="ru">о</span> <input type="checkbox"></td>
-                        <td><span class="ru-teng">у</span> <span class="ru">у</span> <input type="checkbox"></td>
+                        <td><span class="ru-teng">а</span> <span class="ru" data-example="карта">а</span> <input type="checkbox"></td>
+                        <td><span class="ru-teng">э</span> <span class="ru" data-example="эдо">э</span> <input type="checkbox"></td>
+                        <td><span class="ru-teng">и</span> <span class="ru" data-example="пик">и</span> <input type="checkbox"></td>
+                        <td><span class="ru-teng">о</span> <span class="ru" data-example="пот">о</span> <input type="checkbox"></td>
+                        <td><span class="ru-teng">у</span> <span class="ru" data-example="мурчание">у</span> <input type="checkbox"></td>
                     </tr>
                     <tr>
-                        <td><span class="ru-teng">я</span> <span class="ru">я</span> <input type="checkbox"></td>
-                        <td><span class="ru-teng">е</span> <span class="ru">е</span> <input type="checkbox"></td>
+                        <td><span class="ru-teng">я</span> <span class="ru" data-example="явка">я</span> <input type="checkbox"></td>
+                        <td><span class="ru-teng">е</span> <span class="ru" data-example="еда">е</span> <input type="checkbox"></td>
                         <td></td>
-                        <td><span class="ru-teng">ё</span> <span class="ru">ё</span> <input type="checkbox"></td>
-                        <td><span class="ru-teng">ю</span> <span class="ru">ю</span> <input type="checkbox"></td>
+                        <td><span class="ru-teng">ё</span> <span class="ru" data-example="ёж">ё</span> <input type="checkbox"></td>
+                        <td><span class="ru-teng">ю</span> <span class="ru" data-example="юла">ю</span> <input type="checkbox"></td>
                     </tr>
                 </table>
             </div>
