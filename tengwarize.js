@@ -37,6 +37,9 @@
                         });
                     } else if (options.mode=='event-keyup') {
                         $(options.source_selector).keyup(function(){$this.tengwarize('convert_text',options);});
+                        $this.tengwarize('convert_text',options);
+                    } else if (options.mode=='change') {
+                        $(options.source_selector).change(function(){$this.tengwarize('convert_text',options);});
                     }
                 }
             });

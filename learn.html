@@ -48,52 +48,64 @@
         }
 
 
-        // @todo: а нафига оно здесь берёт список тенгв, если можно брать список русских букв?! Или вообще брать то, что ниже прописано
+        /**
+          * Берём случайную букву из allowed, но не ту же, что уже есть в hidden-input
+          * Пишем её в hidden-input
+          * Транслитерируем в поле, где эта буква отображается
+          */
         function nextTengwaForTraining()
         {
-            /**
-              * @todo:
-              * Берём случайную букву из allowed, но не ту же, что уже есть в hidden-input
-              * Пишем её в hidden-input
-              * Транслитерируем в поле, где эта буква отображается
-              */
-
-return;
-
-            prevTengwa = curTengwa;
-            updateAllowed();
-            curTengwa = allowed[Math.floor(Math.random()*allowed.length)];
-            if (curTengwa.type!='punctuation' && curTengwa.standalone && inArray(curTengwa.ru,allowed) && prevTengwa!=curTengwa) {
-                $('#tengwa').text(" "+curTengwa.tengwa)
-            } else {
-                curTengwa = prevTengwa;
-                nextTengwaForTraining();
-            }
-        }
-
-        function check(){
-            /**
-             * @todo
-             *  Берём введённый текст и смотрим, входит ли в него подстрока, упомянутая в поле hidden
-             *  Да, если мы захотим "примеры", придётся их подбирать динамически из какого-то отдельного массива.
-             *  В том же allowed может он храниться или хз где ещё
-             */
-             return;
-            var val = $('#txt').val();
-            if (val=='')
+            if (allowed.length<2)
                 return false;
 
-            var re = new RegExp(curTengwa.regexp, "i");
-            if (re.test(val))
-                alert('хорошо, как в примере "'+curTengwa.example + "\" с буквой "+curTengwa.ru);
-            else
-                alert('плохо, подошло бы, например "'+curTengwa.example + "\" с буквой "+curTengwa.ru);
+            old_letter = $('#answer_to_quest').val();
+            letter = allowed[Math.floor(Math.random()*allowed.length)];
+            while (letter == old_letter) {
+                letter = allowed[Math.floor(Math.random()*allowed.length)];
+            }
+
+            $('#answer_to_quest').val(letter);
+
+            $('#tengwa').tengwarize({
+                json_path: "data.json",
+                font_path: "./tngan.ttf",
+                languages: ["ru"],
+                source_selector: "#answer_to_quest",
+                mode: "once",
+            });
+        }
+
+        /**
+         * @todo
+         *  Берём введённый текст и смотрим, входит ли в него подстрока, упомянутая в поле hidden
+         *  Да, если мы захотим "примеры", придётся их подбирать динамически из какого-то отдельного массива.
+         *  В том же allowed может он храниться или хз где ещё
+         */
+        function check() {
+            cur_letter = $('#answer_to_quest').val();
+            text = $('#txt').val();
+
+            if (text.indexOf(cur_letter)>-1) {
+                alert('хорошо, как в примере "'+examples[cur_letter] + "\" с буквой "+cur_letter);
+            }else{
+                alert('плохо, подошло бы, например "'+examples[cur_letter] + "\" с буквой "+cur_letter);
+            }
             $('#txt').val('');
+
             nextTengwaForTraining();
         }
 
 
         $(document).ready(function(){
+            // Раскрашиваем тенгвы в тексте
+            $('.ru-teng').each(function(){
+                $(this).tengwarize({
+                    json_path: "data.json",
+                    font_path: "./tngan.ttf",
+                    languages: ["ru"],
+                    mode: "once"
+                });
+            });
             updateAllowed();
 
             // Генерация тенгвы для тренировки
@@ -123,26 +135,13 @@ return;
                 return false;
             });
 
+            // При изменении списка тренируемых тенгв - надо обновлять массив тренируемых и текущую тенгву
+            $('.hint-table input[type="checkbox"]').click(function(){
+                updateAllowed();
+                nextTengwaForTraining();
+            });
         });
 
-    </script>
-      <script type="text/javascript">
-        $(document).ready(function(){
-            $('#tengwa').tengwarize({
-                json_path: "data.json",
-                font_path: "./tngan.ttf",
-                languages: ["ru"],
-                mode: "once"
-            });
-            $('.ru-teng').each(function(){
-                $(this).tengwarize({
-                    json_path: "data.json",
-                    font_path: "./tngan.ttf",
-                    languages: ["ru"],
-                    mode: "once"
-                });
-            });
-        })
     </script>
 </head>
   <body>
