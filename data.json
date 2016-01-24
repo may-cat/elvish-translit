@@ -432,6 +432,15 @@
       },
       {
         "ru": "е",
+        "regexp": "([йцкнгшщзхфвпрлджчсмтб])е",
+        "example": "еда",
+        "replace": "$1F",
+        "type": "vowel",
+        "standalone": true,
+        "tengwa": "F"
+      },
+      {
+        "ru": "е",
         "regexp": "е",
         "example": "еда",
         "replace": "hF",
@@ -686,10 +695,10 @@
         "ru": "-",
         "regexp": "\\-",
         "example": "ола-ла",
-        "replace": "&",
+        "replace": " =",
         "type": "punctuation",
         "standalone": true,
-        "tengwa": "&"
+        "tengwa": "="
       },
       {
         "ru": ".",
@@ -713,10 +722,10 @@
         "ru": ",",
         "regexp": "\\,",
         "example": "я, ты",
-        "replace": "&",
+        "replace": " =",
         "type": "punctuation",
         "standalone": true,
-        "tengwa": "&"
+        "tengwa": "="
       },
       {
         "ru": "!",
