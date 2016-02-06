@@ -7,8 +7,17 @@
     "en": [
       {
         "en": "",
-        "regexp": "([qwrtpsdfghjklzxcvbnm])\\1",
-        "replace": "$1{{@@\"@@}}",
+        "regexp": "([qwrtpsfhkzc])\\1",
+        "replace": "$1{{@@;@@}}",
+        "tengwa": "",
+        "type": "modify",
+        "standalone": false,
+        "example": ""
+      },
+      {
+        "en": "",
+        "regexp": "([dgjlxvbnm])\\1",
+        "replace": "$1{{@@:@@}}",
         "tengwa": "",
         "type": "modify",
         "standalone": false,
@@ -342,8 +351,17 @@
     "ru": [
       {
         "ru": "",
-        "regexp": "([йцкнгшщзхфвпрлджчсмтбьъ])\\1",
-        "replace": "$1{{@@\"@@}}",
+        "regexp": "([йкшщзхфпрчстьъ])\\1",
+        "replace": "$1{{@@;@@}}",
+        "tengwa": "",
+        "type": "modify",
+        "standalone": false,
+        "example": ""
+      },
+      {
+        "ru": "",
+        "regexp": "([цнгвлджмб])\\1",
+        "replace": "$1{{@@:@@}}",
         "tengwa": "",
         "type": "modify",
         "standalone": false,
