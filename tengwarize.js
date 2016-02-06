@@ -16,11 +16,11 @@
         return style.sheet;
     })();
     sheet.insertRule('@font-face { font-family: "Tengwar Annatar"; src: url('+options.font_path+') format("truetype");}', sheet.cssRules.length);
-    sheet.insertRule('.tengwar { font-family: "Tengwar"; }', sheet.cssRules.length);
+    sheet.insertRule('.tengwar { font-family: "Tengwar Annatar"; }', sheet.cssRules.length);
 
     var methods = {
         init: function (options){
-            this.css({fontFamily: "Tengwar"});
+            this.css({fontFamily: "Tengwar Annatar"});
             var $this = this;
             this.tengwar_array = [];
             this.tengwar_config = [];
@@ -29,7 +29,10 @@
                 dataType: "json",
                 url: options.json_path,
                 success: function(data) {
-                    $this.tengwar_array = data.regex.en.concat(data.regex.ru); // @todo: сделать перебор языков по переданным в options
+                    $this.tengwar_array = $this.tengwar_array.concat(data.regex.digits); // @todo: сделать перебор языков по переданным в options
+                    $this.tengwar_array = $this.tengwar_array.concat(data.regex.en); // @todo: сделать перебор языков по переданным в options
+                    $this.tengwar_array = $this.tengwar_array.concat(data.regex.ru); // @todo: сделать перебор языков по переданным в options
+                    console.log($this.tengwar_array);
                     $this.tengwar_config = data.config;
                     if (options.mode=='once') {
                         $(this).each(function() {
@@ -58,6 +61,7 @@
                         var re = new RegExp(this.tengwar_array[curTengwa].regexp, "ig");
                         if (arLine[i].match(re))
                             arLine[i] = arLine[i].replace(re, this.tengwar_array[curTengwa].replace);
+                        console.log(arLine[i]);
                     }
                     // удаляем временные разделители, которые необходимы из-за английского языка
                     var re = new RegExp(this.tengwar_config.delimiterbefore, "ig");
@@ -91,7 +95,7 @@
         options = {};
         options.font_path = "./tngan.ttf";
         options.json_path = "data.json";
-        options.languages = ['ru','en']; // словари, которые применяем
+        options.languages = ['ru','en','digits']; // словари, которые применяем
         options.source_selector = ""; // селектор по которому выбираем источник данных
         options.mode = 'once';
         // options.mode = 'event-keyup';

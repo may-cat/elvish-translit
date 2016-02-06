@@ -4,6 +4,98 @@
     "delimiterafter": "@@}}"
   },
   "regex": {
+    "digits": [
+      {
+        "digits": "1",
+        "regexp": "1",
+        "replace": "{{@@ñ@@}}",
+        "tengwa": "ñ",
+        "type": "digit",
+        "standalone": true,
+        "example": "1"
+      },
+      {
+        "digits": "2",
+        "regexp": "2",
+        "replace": "{{@@ò@@}}",
+        "tengwa": "ò",
+        "type": "digit",
+        "standalone": true,
+        "example": "2"
+      },
+      {
+        "digits": "3",
+        "regexp": "3",
+        "replace": "{{@@ó@@}}",
+        "tengwa": "ó",
+        "type": "digit",
+        "standalone": true,
+        "example": "3"
+      },
+      {
+        "digits": "4",
+        "regexp": "4",
+        "replace": "{{@@ô@@}}",
+        "tengwa": "ô",
+        "type": "digit",
+        "standalone": true,
+        "example": "4"
+      },
+      {
+        "digits": "5",
+        "regexp": "5",
+        "replace": "{{@@õ@@}}",
+        "tengwa": "õ",
+        "type": "digit",
+        "standalone": true,
+        "example": "5"
+      },
+      {
+        "digits": "6",
+        "regexp": "6",
+        "replace": "{{@@ö@@}}",
+        "tengwa": "ö",
+        "type": "digit",
+        "standalone": true,
+        "example": "6"
+      },
+      {
+        "digits": "7",
+        "regexp": "7",
+        "replace": "{{@@÷@@}}",
+        "tengwa": "÷",
+        "type": "digit",
+        "standalone": true,
+        "example": "7"
+      },
+      {
+        "digits": "8",
+        "regexp": "8",
+        "replace": "{{@@ø@@}}",
+        "tengwa": "ø",
+        "type": "digit",
+        "standalone": true,
+        "example": "8"
+      },
+      {
+        "digits": "9",
+        "regexp": "9",
+        "replace": "{{@@ù@@}}",
+        "tengwa": "ù",
+        "type": "digit",
+        "standalone": true,
+        "example": "9"
+      },
+      {
+        "digits": "0",
+        "regexp": "0",
+        "replace": "{{@@ð@@}}",
+        "tengwa": "ð",
+        "type": "digit",
+        "standalone": true,
+        "example": "0"
+      }
+    ],
     "en": [
       {
         "en": "",
@@ -370,7 +462,7 @@
       {
         "ru": "а",
         "regexp": "([ьуеаоэяиюыёзc])а|^а",
-        "replace": "$1`C",
+        "replace": "$1{{@@`C@@}}",
         "tengwa": "`C",
         "type": "vowel",
         "standalone": true,
@@ -379,7 +471,7 @@
       {
         "ru": "э",
         "regexp": "([ьуеаоэяиюыёз])э|^э",
-        "replace": "$1`F",
+        "replace": "$1{{@@`F@@}}",
         "tengwa": "`F",
         "type": "vowel",
         "standalone": true,
@@ -388,7 +480,7 @@
       {
         "ru": "и",
         "regexp": "([ьуеаоэяиюыёз])и|^и",
-        "replace": "$1`G",
+        "replace": "$1{{@@`G@@}}",
         "tengwa": "`G",
         "type": "vowel",
         "standalone": true,
@@ -398,7 +490,7 @@
         "ru": "о",
         "regexp": "([ьуеаоэяиюыёз])о|^о",
         "example": "облако",
-        "replace": "$1`H",
+        "replace": "$1{{@@`H@@}}",
         "type": "vowel",
         "standalone": true,
         "tengwa": "`H"
@@ -407,7 +499,7 @@
         "ru": "у",
         "regexp": "([ьуеаоэяиюыёз])у|^у",
         "example": "узор, заурчал",
-        "replace": "$1`J",
+        "replace": "$1{{@@`J@@}}",
         "type": "vowel",
         "standalone": true,
         "tengwa": "`J"
@@ -416,7 +508,7 @@
         "ru": "а",
         "regexp": "а",
         "example": "дата",
-        "replace": "C",
+        "replace": "{{@@C@@}}",
         "type": "vowel",
         "standalone": false,
         "tengwa": "C"
@@ -425,7 +517,7 @@
         "ru": "э",
         "regexp": "э",
         "example": "мэр",
-        "replace": "F",
+        "replace": "{{@@F@@}}",
         "type": "vowel",
         "standalone": false,
         "tengwa": "F"
@@ -434,7 +526,7 @@
         "ru": "и",
         "regexp": "и",
         "example": "пир",
-        "replace": "G",
+        "replace": "{{@@G@@}}",
         "type": "vowel",
         "standalone": false,
         "tengwa": "G"
@@ -443,7 +535,7 @@
         "ru": "о",
         "regexp": "о",
         "example": "кот",
-        "replace": "H",
+        "replace": "{{@@H@@}}",
         "type": "vowel",
         "standalone": false,
         "tengwa": "H"
@@ -452,7 +544,7 @@
         "ru": "у",
         "regexp": "у",
         "example": "путь",
-        "replace": "J",
+        "replace": "{{@@J@@}}",
         "type": "vowel",
         "standalone": false,
         "tengwa": "J"
@@ -461,7 +553,7 @@
         "ru": "я",
         "regexp": "я",
         "example": "яблоко",
-        "replace": "hC",
+        "replace": "{{@@hC@@}}",
         "type": "vowel",
         "standalone": true,
         "tengwa": "hC"
@@ -470,7 +562,7 @@
         "ru": "е",
         "regexp": "([йцкнгшщзхфвпрлджчсмтб])е",
         "example": "еда",
-        "replace": "$1F",
+        "replace": "$1{{@@F@@}}",
         "type": "vowel",
         "standalone": true,
         "tengwa": "F"
@@ -479,7 +571,7 @@
         "ru": "е",
         "regexp": "е",
         "example": "еда",
-        "replace": "hF",
+        "replace": "{{@@hF@@}}",
         "type": "vowel",
         "standalone": true,
         "tengwa": "hF"
@@ -488,7 +580,7 @@
         "ru": "ё",
         "regexp": "ё",
         "example": "ёлка",
-        "replace": "hH",
+        "replace": "{{@@hH@@}}",
         "type": "vowel",
         "standalone": true,
         "tengwa": "hH"
@@ -497,7 +589,7 @@
         "ru": "ю",
         "regexp": "ю",
         "example": "юла",
-        "replace": "hJ",
+        "replace": "{{@@hJ@@}}",
         "type": "vowel",
         "standalone": true,
         "tengwa": "hJ"
@@ -506,7 +598,7 @@
         "ru": "ы",
         "regexp": "ы",
         "example": "смысл",
-        "replace": "nB",
+        "replace": "{{@@nB@@}}",
         "type": "vowel",
         "standalone": true,
         "tengwa": "nB"
@@ -515,7 +607,7 @@
         "ru": "ь",
         "regexp": "ь",
         "example": "тень",
-        "replace": "Ì",
+        "replace": "{{@@Ì@@}}",
         "type": "vowel",
         "standalone": false,
         "tengwa": "Ì"
@@ -524,7 +616,7 @@
         "ru": "ъ",
         "regexp": "ъ",
         "example": "подъезд",
-        "replace": "n",
+        "replace": "{{@@n@@}}",
         "type": "consonant",
         "standalone": true,
         "tengwa": "n"
@@ -533,7 +625,7 @@
         "ru": "ц",
         "regexp": "ц",
         "example": "перец",
-        "replace": "1_",
+        "replace": "{{@@1_@@}}",
         "type": "consonant",
         "standalone": true,
         "tengwa": "1_"
@@ -542,7 +634,7 @@
         "ru": "щ",
         "regexp": "щ",
         "example": "ящер",
-        "replace": "A",
+        "replace": "{{@@A@@}}",
         "type": "consonant",
         "standalone": true,
         "tengwa": "A"
@@ -551,7 +643,7 @@
         "ru": "т",
         "regexp": "т",
         "example": "терем",
-        "replace": "1",
+        "replace": "{{@@1@@}}",
         "type": "consonant",
         "standalone": true,
         "tengwa": "1"
@@ -560,7 +652,7 @@
         "ru": "п",
         "regexp": "п",
         "example": "полёт",
-        "replace": "q",
+        "replace": "{{@@q@@}}",
         "type": "consonant",
         "standalone": true,
         "tengwa": "q"
@@ -569,7 +661,7 @@
         "ru": "ч",
         "regexp": "ч",
         "example": "чека",
-        "replace": "a",
+        "replace": "{{@@a@@}}",
         "type": "consonant",
         "standalone": true,
         "tengwa": "a"
@@ -578,7 +670,7 @@
         "ru": "к",
         "regexp": "к",
         "example": "кот",
-        "replace": "z",
+        "replace": "{{@@z@@}}",
         "type": "consonant",
         "standalone": true,
         "tengwa": "z"
@@ -587,7 +679,7 @@
         "ru": "г",
         "regexp": "г",
         "example": "гараж",
-        "replace": "x",
+        "replace": "{{@@x@@}}",
         "type": "consonant",
         "standalone": true,
         "tengwa": "x"
@@ -596,7 +688,7 @@
         "ru": "б",
         "regexp": "б",
         "example": "буря",
-        "replace": "w",
+        "replace": "{{@@w@@}}",
         "type": "consonant",
         "standalone": true,
         "tengwa": "w"
@@ -605,7 +697,7 @@
         "ru": "дж",
         "regexp": "дж",
         "example": "джон",
-        "replace": "s",
+        "replace": "{{@@s@@}}",
         "type": "consonant",
         "standalone": true,
         "tengwa": "s"
@@ -614,7 +706,7 @@
         "ru": "д",
         "regexp": "д",
         "example": "дом",
-        "replace": "2",
+        "replace": "{{@@2@@}}",
         "type": "consonant",
         "standalone": true,
         "tengwa": "2"
@@ -623,7 +715,7 @@
         "ru": "ф",
         "regexp": "ф",
         "example": "фен",
-        "replace": "e",
+        "replace": "{{@@e@@}}",
         "type": "consonant",
         "standalone": true,
         "tengwa": "e"
@@ -632,7 +724,7 @@
         "ru": "ш",
         "regexp": "ш",
         "example": "шок",
-        "replace": "d",
+        "replace": "{{@@d@@}}",
         "type": "consonant",
         "standalone": true,
         "tengwa": "d"
@@ -641,7 +733,7 @@
         "ru": "х",
         "regexp": "х",
         "example": "ход",
-        "replace": "c",
+        "replace": "{{@@c@@}}",
         "type": "consonant",
         "standalone": true,
         "tengwa": "c"
@@ -650,7 +742,7 @@
         "ru": "в",
         "regexp": "в",
         "example": "вот",
-        "replace": "r",
+        "replace": "{{@@r@@}}",
         "type": "consonant",
         "standalone": true,
         "tengwa": "r"
@@ -659,7 +751,7 @@
         "ru": "ж",
         "regexp": "ж",
         "example": "жизнь",
-        "replace": "f",
+        "replace": "{{@@f@@}}",
         "type": "consonant",
         "standalone": true,
         "tengwa": "f"
@@ -668,7 +760,7 @@
         "ru": "н",
         "regexp": "н",
         "example": "нет",
-        "replace": "5",
+        "replace": "{{@@5@@}}",
         "type": "consonant",
         "standalone": true,
         "tengwa": "5"
@@ -677,7 +769,7 @@
         "ru": "м",
         "regexp": "м",
         "example": "мне",
-        "replace": "t",
+        "replace": "{{@@t@@}}",
         "type": "consonant",
         "standalone": true,
         "tengwa": "t"
@@ -686,7 +778,7 @@
         "ru": "й",
         "regexp": "й",
         "example": "йог",
-        "replace": "h",
+        "replace": "{{@@h@@}}",
         "type": "consonant",
         "standalone": true,
         "tengwa": "h"
@@ -695,7 +787,7 @@
         "ru": "л",
         "regexp": "л",
         "example": "лёд",
-        "replace": "j",
+        "replace": "{{@@j@@}}",
         "type": "consonant",
         "standalone": true,
         "tengwa": "j"
@@ -704,7 +796,7 @@
         "ru": "р",
         "regexp": "р",
         "example": "род",
-        "replace": "7",
+        "replace": "{{@@7@@}}",
         "type": "consonant",
         "standalone": true,
         "tengwa": "7"
@@ -713,7 +805,7 @@
         "ru": "з",
         "regexp": "з",
         "example": "зоб",
-        "replace": "k",
+        "replace": "{{@@k@@}}",
         "type": "consonant",
         "standalone": true,
         "tengwa": "k"
@@ -722,7 +814,7 @@
         "ru": "с",
         "regexp": "с",
         "example": "сок",
-        "replace": "8",
+        "replace": "{{@@8@@}}",
         "type": "consonant",
         "standalone": true,
         "tengwa": "8"
@@ -731,7 +823,7 @@
         "ru": "-",
         "regexp": "\\-",
         "example": "ола-ла",
-        "replace": " =",
+        "replace": "{{@@ =@@}}",
         "type": "punctuation",
         "standalone": true,
         "tengwa": "="
@@ -740,7 +832,7 @@
         "ru": ".",
         "regexp": "\\.",
         "example": "предложение.",
-        "replace": "-",
+        "replace": "{{@@-@@}}",
         "type": "punctuation",
         "standalone": true,
         "tengwa": "-"
@@ -749,7 +841,7 @@
         "ru": "?",
         "regexp": "\\?",
         "example": "да?",
-        "replace": "À",
+        "replace": "{{@@À@@}}",
         "type": "punctuation",
         "standalone": true,
         "tengwa": "À"
@@ -758,7 +850,7 @@
         "ru": ",",
         "regexp": "\\,",
         "example": "я, ты",
-        "replace": " =",
+        "replace": "{{@@ =@@}}",
         "type": "punctuation",
         "standalone": true,
         "tengwa": "="
@@ -767,7 +859,7 @@
         "ru": "!",
         "regexp": "\\!",
         "example": "кот!",
-        "replace": "½",
+        "replace": "{{@@½@@}}",
         "type": "punctuation",
         "standalone": true,
         "tengwa": "½"
