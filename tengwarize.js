@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Скрипт подключает шрифт к странице,
  * загружает базу тенгв,
  * и создаёт метод для превращения текста в тенгвар.
@@ -15,7 +15,7 @@
         document.head.appendChild(style); // Add the <style> element to the page
         return style.sheet;
     })();
-    sheet.insertRule('@font-face { font-family: "Tengwar"; src: url('+options.font_path+') format("truetype");}', sheet.cssRules.length);
+    sheet.insertRule('@font-face { font-family: "Tengwar Annatar"; src: url('+options.font_path+') format("truetype");}', sheet.cssRules.length);
     sheet.insertRule('.tengwar { font-family: "Tengwar"; }', sheet.cssRules.length);
 
     var methods = {

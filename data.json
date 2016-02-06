@@ -6,6 +6,15 @@
   "regex": {
     "en": [
       {
+        "en": "",
+        "regexp": "([qwrtpsdfghjklzxcvbnm])\\1",
+        "replace": "$1{{@@\"@@}}",
+        "tengwa": "",
+        "type": "modify",
+        "standalone": false,
+        "example": ""
+      },
+      {
         "en": "a",
         "regexp": "([aeiou])a|^a",
         "replace": "$1{{@@`C@@}}",
@@ -331,6 +340,15 @@
       }
     ],
     "ru": [
+      {
+        "ru": "",
+        "regexp": "([йцкнгшщзхфвпрлджчсмтбьъ])\\1",
+        "replace": "$1{{@@\"@@}}",
+        "tengwa": "",
+        "type": "modify",
+        "standalone": false,
+        "example": ""
+      },
       {
         "ru": "а",
         "regexp": "([ьуеаоэяиюыёзc])а|^а",
