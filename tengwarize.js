@@ -32,7 +32,7 @@
                     $this.tengwar_array = $this.tengwar_array.concat(data.regex.digits); // @todo: сделать перебор языков по переданным в options
                     $this.tengwar_array = $this.tengwar_array.concat(data.regex.en); // @todo: сделать перебор языков по переданным в options
                     $this.tengwar_array = $this.tengwar_array.concat(data.regex.ru); // @todo: сделать перебор языков по переданным в options
-                    console.log($this.tengwar_array);
+//                    console.log($this.tengwar_array);
                     $this.tengwar_config = data.config;
                     if (options.mode=='once') {
                         $(this).each(function() {
