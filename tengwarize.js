@@ -48,25 +48,27 @@
             // подрубаем к объекту стили со шрифтом Tengwar Annatar
             var txt = this.tengwarize('extract_text',options);
             $(this).html(''); // затираем всё, что есть
-            var arTxt = txt.split(' '); // вытащенный текст разбиваем по словам
-            for (i in arTxt) { // и по словам превращаем в тенгвар
-                var curTengwa;
-                // Применяем все шаблоны по очереди
-                for (curTengwa in this.tengwar_array) {
-                    var re = new RegExp(this.tengwar_array[curTengwa].regexp, "ig");
-                    if (arTxt[i].match(re))
-                        arTxt[i] = arTxt[i].replace(re, this.tengwar_array[curTengwa].replace);
+            var arTxt = txt.split('\n'); // вытащенный текст разбиваем по словам
+            for (line in arTxt){
+                var arLine = arTxt[line].split(' ');
+                for (i in arLine) { // и по словам превращаем в тенгвар
+                    var curTengwa;
+                    // Применяем все шаблоны по очереди
+                    for (curTengwa in this.tengwar_array) {
+                        var re = new RegExp(this.tengwar_array[curTengwa].regexp, "ig");
+                        if (arLine[i].match(re))
+                            arLine[i] = arLine[i].replace(re, this.tengwar_array[curTengwa].replace);
+                    }
+                    // удаляем временные разделители, которые необходимы из-за английского языка
+                    var re = new RegExp(this.tengwar_config.delimiterbefore, "ig");
+                    arLine[i] = arLine[i].replace(re,"");
+                    var re = new RegExp(this.tengwar_config.delimiterafter, "ig");
+                    arLine[i] = arLine[i].replace(re,"");
+                    // пишем сконвертированное слово в объект
+                    $(this).append(arLine[i]+' ');
                 }
-                // удаляем временные разделители, которые необходимы из-за английского языка
-                var re = new RegExp(this.tengwar_config.delimiterbefore, "ig");
-                arTxt[i] = arTxt[i].replace(re,"");
-                var re = new RegExp(this.tengwar_config.delimiterafter, "ig");
-                arTxt[i] = arTxt[i].replace(re,"");
-                var re = new RegExp("\n","ig");
                 if (options.linebreaks)
-                    arTxt[i] = arTxt[i].replace(re,"<br/>");
-                // пишем сконвертированное слово в объект
-                $(this).append(arTxt[i]+' ');
+                    $(this).append('<br>');
             }
         },
         extract_text: function(options) {
